@@ -328,8 +328,8 @@
 			strUrl = "/bizwiz/board/board_write.asp?dbname=" + strCate3 + "&target=G&gc=" + strCate2;
 		}
 
-		//console.log("http://gw.meditong.com/bizwiz/schedule/rnw_workSchedule_my_pdfNew.asp?EmpSeqno=448197&OfficeCode=102422&nDate=2026-10&group_no=5119 / 102422_myworkschedule_202691131935 / /MWorks/102422");
-		CallPDFIA("http://gw.meditong.com/bizwiz/schedule/rnw_workSchedule_my_pdfNew.asp?EmpSeqno=448197&OfficeCode=102422&nDate=2026-10&group_no=5119", "102422_myworkschedule_202691131935", "/MWorks/102422",strUrl);
+		//console.log("http://gw.meditong.com/bizwiz/schedule/rnw_workSchedule_my_pdfNew.asp?EmpSeqno=448197&OfficeCode=102422&nDate=2026-10&group_no=5119 / 102422_myworkschedule_202691133059 / /MWorks/102422");
+		CallPDFIA("http://gw.meditong.com/bizwiz/schedule/rnw_workSchedule_my_pdfNew.asp?EmpSeqno=448197&OfficeCode=102422&nDate=2026-10&group_no=5119", "102422_myworkschedule_202691133059", "/MWorks/102422",strUrl);
 	}
 
 	function CallPDFIA(RequestURL, RequestFileName, RequestFolderName, strUrl) {
@@ -1873,7 +1873,7 @@ $(document).ready(function(){
 								
 							</tr>
 
-							
+							WITH Top1Work AS ( SELECT TOP 1 * FROM bizwiz20db.Workschedule_new WITH(NOLOCK) WHERE PSEQ_No = '5119' AND EmpSeqNo = '364874' AND OfficeCode = '102422' AND WorkMonth = '2026-10' AND DEL_TF = 'N' AND USE_TF = 'Y' ORDER BY REG_DATE DESC ), SplitWorkCodes AS ( SELECT t.WorkscheduleCode, t.PSEQ_No, t.WorkCode, t.WorkMemo, t.WorkDate, t.Last_Use_Tf, f.Item AS WorkCodeSplit, f.ItemOrder FROM Top1Work t CROSS APPLY dbo.fn_SplitStringWithEmpty(t.WorkCode, ',') f ), Colors AS ( SELECT s.WorkscheduleCode, s.WorkCode, s.WorkMemo, s.WorkDate, s.Last_Use_Tf, s.ItemOrder, s.WorkCodeSplit, ISNULL(wss.WorkColor, '') AS WorkColor, ISNULL(wss.WorkType, '') AS WorkType FROM SplitWorkCodes s LEFT JOIN bizwiz20db.WorkscheduleSetting wss WITH(NOLOCK) ON s.WorkCodeSplit = wss.WorkCode AND wss.OfficeCode = '102422' AND wss.del_tf = 'N'   ) SELECT c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf, STUFF(( SELECT ','  + innerC.WorkColor FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkColorsNumbered, STUFF(( SELECT ',' + innerC.WorkType FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkTypesNumbered FROM Colors c GROUP BY c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf; <BR>
 
 										<!-- 근무표 시작 위치 -->
 										<tr class="text-center">
@@ -1959,7 +1959,7 @@ $(document).ready(function(){
 												$("#totwork_"+ncnt).html(tot);
 											</script>
 										</tr>
-										
+										WITH Top1Work AS ( SELECT TOP 1 * FROM bizwiz20db.Workschedule_new WITH(NOLOCK) WHERE PSEQ_No = '5119' AND EmpSeqNo = '364875' AND OfficeCode = '102422' AND WorkMonth = '2026-10' AND DEL_TF = 'N' AND USE_TF = 'Y' ORDER BY REG_DATE DESC ), SplitWorkCodes AS ( SELECT t.WorkscheduleCode, t.PSEQ_No, t.WorkCode, t.WorkMemo, t.WorkDate, t.Last_Use_Tf, f.Item AS WorkCodeSplit, f.ItemOrder FROM Top1Work t CROSS APPLY dbo.fn_SplitStringWithEmpty(t.WorkCode, ',') f ), Colors AS ( SELECT s.WorkscheduleCode, s.WorkCode, s.WorkMemo, s.WorkDate, s.Last_Use_Tf, s.ItemOrder, s.WorkCodeSplit, ISNULL(wss.WorkColor, '') AS WorkColor, ISNULL(wss.WorkType, '') AS WorkType FROM SplitWorkCodes s LEFT JOIN bizwiz20db.WorkscheduleSetting wss WITH(NOLOCK) ON s.WorkCodeSplit = wss.WorkCode AND wss.OfficeCode = '102422' AND wss.del_tf = 'N'   ) SELECT c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf, STUFF(( SELECT ','  + innerC.WorkColor FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkColorsNumbered, STUFF(( SELECT ',' + innerC.WorkType FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkTypesNumbered FROM Colors c GROUP BY c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf; <BR>
 
 										<!-- 근무표 시작 위치 -->
 										<tr class="text-center">
@@ -2045,7 +2045,7 @@ $(document).ready(function(){
 												$("#totwork_"+ncnt).html(tot);
 											</script>
 										</tr>
-										
+										WITH Top1Work AS ( SELECT TOP 1 * FROM bizwiz20db.Workschedule_new WITH(NOLOCK) WHERE PSEQ_No = '5119' AND EmpSeqNo = '364876' AND OfficeCode = '102422' AND WorkMonth = '2026-10' AND DEL_TF = 'N' AND USE_TF = 'Y' ORDER BY REG_DATE DESC ), SplitWorkCodes AS ( SELECT t.WorkscheduleCode, t.PSEQ_No, t.WorkCode, t.WorkMemo, t.WorkDate, t.Last_Use_Tf, f.Item AS WorkCodeSplit, f.ItemOrder FROM Top1Work t CROSS APPLY dbo.fn_SplitStringWithEmpty(t.WorkCode, ',') f ), Colors AS ( SELECT s.WorkscheduleCode, s.WorkCode, s.WorkMemo, s.WorkDate, s.Last_Use_Tf, s.ItemOrder, s.WorkCodeSplit, ISNULL(wss.WorkColor, '') AS WorkColor, ISNULL(wss.WorkType, '') AS WorkType FROM SplitWorkCodes s LEFT JOIN bizwiz20db.WorkscheduleSetting wss WITH(NOLOCK) ON s.WorkCodeSplit = wss.WorkCode AND wss.OfficeCode = '102422' AND wss.del_tf = 'N'   ) SELECT c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf, STUFF(( SELECT ','  + innerC.WorkColor FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkColorsNumbered, STUFF(( SELECT ',' + innerC.WorkType FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkTypesNumbered FROM Colors c GROUP BY c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf; <BR>
 
 										<!-- 근무표 시작 위치 -->
 										<tr class="text-center">
@@ -2131,7 +2131,7 @@ $(document).ready(function(){
 												$("#totwork_"+ncnt).html(tot);
 											</script>
 										</tr>
-										
+										WITH Top1Work AS ( SELECT TOP 1 * FROM bizwiz20db.Workschedule_new WITH(NOLOCK) WHERE PSEQ_No = '5119' AND EmpSeqNo = '364878' AND OfficeCode = '102422' AND WorkMonth = '2026-10' AND DEL_TF = 'N' AND USE_TF = 'Y' ORDER BY REG_DATE DESC ), SplitWorkCodes AS ( SELECT t.WorkscheduleCode, t.PSEQ_No, t.WorkCode, t.WorkMemo, t.WorkDate, t.Last_Use_Tf, f.Item AS WorkCodeSplit, f.ItemOrder FROM Top1Work t CROSS APPLY dbo.fn_SplitStringWithEmpty(t.WorkCode, ',') f ), Colors AS ( SELECT s.WorkscheduleCode, s.WorkCode, s.WorkMemo, s.WorkDate, s.Last_Use_Tf, s.ItemOrder, s.WorkCodeSplit, ISNULL(wss.WorkColor, '') AS WorkColor, ISNULL(wss.WorkType, '') AS WorkType FROM SplitWorkCodes s LEFT JOIN bizwiz20db.WorkscheduleSetting wss WITH(NOLOCK) ON s.WorkCodeSplit = wss.WorkCode AND wss.OfficeCode = '102422' AND wss.del_tf = 'N'   ) SELECT c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf, STUFF(( SELECT ','  + innerC.WorkColor FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkColorsNumbered, STUFF(( SELECT ',' + innerC.WorkType FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkTypesNumbered FROM Colors c GROUP BY c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf; <BR>
 
 										<!-- 근무표 시작 위치 -->
 										<tr class="text-center">
@@ -2217,7 +2217,7 @@ $(document).ready(function(){
 												$("#totwork_"+ncnt).html(tot);
 											</script>
 										</tr>
-										
+										WITH Top1Work AS ( SELECT TOP 1 * FROM bizwiz20db.Workschedule_new WITH(NOLOCK) WHERE PSEQ_No = '5119' AND EmpSeqNo = '364883' AND OfficeCode = '102422' AND WorkMonth = '2026-10' AND DEL_TF = 'N' AND USE_TF = 'Y' ORDER BY REG_DATE DESC ), SplitWorkCodes AS ( SELECT t.WorkscheduleCode, t.PSEQ_No, t.WorkCode, t.WorkMemo, t.WorkDate, t.Last_Use_Tf, f.Item AS WorkCodeSplit, f.ItemOrder FROM Top1Work t CROSS APPLY dbo.fn_SplitStringWithEmpty(t.WorkCode, ',') f ), Colors AS ( SELECT s.WorkscheduleCode, s.WorkCode, s.WorkMemo, s.WorkDate, s.Last_Use_Tf, s.ItemOrder, s.WorkCodeSplit, ISNULL(wss.WorkColor, '') AS WorkColor, ISNULL(wss.WorkType, '') AS WorkType FROM SplitWorkCodes s LEFT JOIN bizwiz20db.WorkscheduleSetting wss WITH(NOLOCK) ON s.WorkCodeSplit = wss.WorkCode AND wss.OfficeCode = '102422' AND wss.del_tf = 'N'   ) SELECT c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf, STUFF(( SELECT ','  + innerC.WorkColor FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkColorsNumbered, STUFF(( SELECT ',' + innerC.WorkType FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkTypesNumbered FROM Colors c GROUP BY c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf; <BR>
 
 										<!-- 근무표 시작 위치 -->
 										<tr class="text-center">
@@ -2303,7 +2303,7 @@ $(document).ready(function(){
 												$("#totwork_"+ncnt).html(tot);
 											</script>
 										</tr>
-										
+										WITH Top1Work AS ( SELECT TOP 1 * FROM bizwiz20db.Workschedule_new WITH(NOLOCK) WHERE PSEQ_No = '5119' AND EmpSeqNo = '441952' AND OfficeCode = '102422' AND WorkMonth = '2026-10' AND DEL_TF = 'N' AND USE_TF = 'Y' ORDER BY REG_DATE DESC ), SplitWorkCodes AS ( SELECT t.WorkscheduleCode, t.PSEQ_No, t.WorkCode, t.WorkMemo, t.WorkDate, t.Last_Use_Tf, f.Item AS WorkCodeSplit, f.ItemOrder FROM Top1Work t CROSS APPLY dbo.fn_SplitStringWithEmpty(t.WorkCode, ',') f ), Colors AS ( SELECT s.WorkscheduleCode, s.WorkCode, s.WorkMemo, s.WorkDate, s.Last_Use_Tf, s.ItemOrder, s.WorkCodeSplit, ISNULL(wss.WorkColor, '') AS WorkColor, ISNULL(wss.WorkType, '') AS WorkType FROM SplitWorkCodes s LEFT JOIN bizwiz20db.WorkscheduleSetting wss WITH(NOLOCK) ON s.WorkCodeSplit = wss.WorkCode AND wss.OfficeCode = '102422' AND wss.del_tf = 'N'   ) SELECT c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf, STUFF(( SELECT ','  + innerC.WorkColor FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkColorsNumbered, STUFF(( SELECT ',' + innerC.WorkType FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkTypesNumbered FROM Colors c GROUP BY c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf; <BR>
 
 										<!-- 근무표 시작 위치 -->
 										<tr class="text-center">
@@ -2389,7 +2389,7 @@ $(document).ready(function(){
 												$("#totwork_"+ncnt).html(tot);
 											</script>
 										</tr>
-										
+										WITH Top1Work AS ( SELECT TOP 1 * FROM bizwiz20db.Workschedule_new WITH(NOLOCK) WHERE PSEQ_No = '5119' AND EmpSeqNo = '440585' AND OfficeCode = '102422' AND WorkMonth = '2026-10' AND DEL_TF = 'N' AND USE_TF = 'Y' ORDER BY REG_DATE DESC ), SplitWorkCodes AS ( SELECT t.WorkscheduleCode, t.PSEQ_No, t.WorkCode, t.WorkMemo, t.WorkDate, t.Last_Use_Tf, f.Item AS WorkCodeSplit, f.ItemOrder FROM Top1Work t CROSS APPLY dbo.fn_SplitStringWithEmpty(t.WorkCode, ',') f ), Colors AS ( SELECT s.WorkscheduleCode, s.WorkCode, s.WorkMemo, s.WorkDate, s.Last_Use_Tf, s.ItemOrder, s.WorkCodeSplit, ISNULL(wss.WorkColor, '') AS WorkColor, ISNULL(wss.WorkType, '') AS WorkType FROM SplitWorkCodes s LEFT JOIN bizwiz20db.WorkscheduleSetting wss WITH(NOLOCK) ON s.WorkCodeSplit = wss.WorkCode AND wss.OfficeCode = '102422' AND wss.del_tf = 'N'   ) SELECT c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf, STUFF(( SELECT ','  + innerC.WorkColor FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkColorsNumbered, STUFF(( SELECT ',' + innerC.WorkType FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkTypesNumbered FROM Colors c GROUP BY c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf; <BR>
 
 										<!-- 근무표 시작 위치 -->
 										<tr class="text-center">
@@ -2475,7 +2475,7 @@ $(document).ready(function(){
 												$("#totwork_"+ncnt).html(tot);
 											</script>
 										</tr>
-										
+										WITH Top1Work AS ( SELECT TOP 1 * FROM bizwiz20db.Workschedule_new WITH(NOLOCK) WHERE PSEQ_No = '5119' AND EmpSeqNo = '441953' AND OfficeCode = '102422' AND WorkMonth = '2026-10' AND DEL_TF = 'N' AND USE_TF = 'Y' ORDER BY REG_DATE DESC ), SplitWorkCodes AS ( SELECT t.WorkscheduleCode, t.PSEQ_No, t.WorkCode, t.WorkMemo, t.WorkDate, t.Last_Use_Tf, f.Item AS WorkCodeSplit, f.ItemOrder FROM Top1Work t CROSS APPLY dbo.fn_SplitStringWithEmpty(t.WorkCode, ',') f ), Colors AS ( SELECT s.WorkscheduleCode, s.WorkCode, s.WorkMemo, s.WorkDate, s.Last_Use_Tf, s.ItemOrder, s.WorkCodeSplit, ISNULL(wss.WorkColor, '') AS WorkColor, ISNULL(wss.WorkType, '') AS WorkType FROM SplitWorkCodes s LEFT JOIN bizwiz20db.WorkscheduleSetting wss WITH(NOLOCK) ON s.WorkCodeSplit = wss.WorkCode AND wss.OfficeCode = '102422' AND wss.del_tf = 'N'   ) SELECT c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf, STUFF(( SELECT ','  + innerC.WorkColor FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkColorsNumbered, STUFF(( SELECT ',' + innerC.WorkType FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkTypesNumbered FROM Colors c GROUP BY c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf; <BR>
 
 										<!-- 근무표 시작 위치 -->
 										<tr class="text-center">
@@ -2561,7 +2561,7 @@ $(document).ready(function(){
 												$("#totwork_"+ncnt).html(tot);
 											</script>
 										</tr>
-										
+										WITH Top1Work AS ( SELECT TOP 1 * FROM bizwiz20db.Workschedule_new WITH(NOLOCK) WHERE PSEQ_No = '5119' AND EmpSeqNo = '452653' AND OfficeCode = '102422' AND WorkMonth = '2026-10' AND DEL_TF = 'N' AND USE_TF = 'Y' ORDER BY REG_DATE DESC ), SplitWorkCodes AS ( SELECT t.WorkscheduleCode, t.PSEQ_No, t.WorkCode, t.WorkMemo, t.WorkDate, t.Last_Use_Tf, f.Item AS WorkCodeSplit, f.ItemOrder FROM Top1Work t CROSS APPLY dbo.fn_SplitStringWithEmpty(t.WorkCode, ',') f ), Colors AS ( SELECT s.WorkscheduleCode, s.WorkCode, s.WorkMemo, s.WorkDate, s.Last_Use_Tf, s.ItemOrder, s.WorkCodeSplit, ISNULL(wss.WorkColor, '') AS WorkColor, ISNULL(wss.WorkType, '') AS WorkType FROM SplitWorkCodes s LEFT JOIN bizwiz20db.WorkscheduleSetting wss WITH(NOLOCK) ON s.WorkCodeSplit = wss.WorkCode AND wss.OfficeCode = '102422' AND wss.del_tf = 'N'   ) SELECT c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf, STUFF(( SELECT ','  + innerC.WorkColor FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkColorsNumbered, STUFF(( SELECT ',' + innerC.WorkType FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkTypesNumbered FROM Colors c GROUP BY c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf; <BR>
 
 										<!-- 근무표 시작 위치 -->
 										<tr class="text-center">
@@ -2647,7 +2647,7 @@ $(document).ready(function(){
 												$("#totwork_"+ncnt).html(tot);
 											</script>
 										</tr>
-										
+										WITH Top1Work AS ( SELECT TOP 1 * FROM bizwiz20db.Workschedule_new WITH(NOLOCK) WHERE PSEQ_No = '5119' AND EmpSeqNo = '364892' AND OfficeCode = '102422' AND WorkMonth = '2026-10' AND DEL_TF = 'N' AND USE_TF = 'Y' ORDER BY REG_DATE DESC ), SplitWorkCodes AS ( SELECT t.WorkscheduleCode, t.PSEQ_No, t.WorkCode, t.WorkMemo, t.WorkDate, t.Last_Use_Tf, f.Item AS WorkCodeSplit, f.ItemOrder FROM Top1Work t CROSS APPLY dbo.fn_SplitStringWithEmpty(t.WorkCode, ',') f ), Colors AS ( SELECT s.WorkscheduleCode, s.WorkCode, s.WorkMemo, s.WorkDate, s.Last_Use_Tf, s.ItemOrder, s.WorkCodeSplit, ISNULL(wss.WorkColor, '') AS WorkColor, ISNULL(wss.WorkType, '') AS WorkType FROM SplitWorkCodes s LEFT JOIN bizwiz20db.WorkscheduleSetting wss WITH(NOLOCK) ON s.WorkCodeSplit = wss.WorkCode AND wss.OfficeCode = '102422' AND wss.del_tf = 'N'   ) SELECT c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf, STUFF(( SELECT ','  + innerC.WorkColor FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkColorsNumbered, STUFF(( SELECT ',' + innerC.WorkType FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkTypesNumbered FROM Colors c GROUP BY c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf; <BR>
 
 										<!-- 근무표 시작 위치 -->
 										<tr class="text-center">
@@ -2733,7 +2733,7 @@ $(document).ready(function(){
 												$("#totwork_"+ncnt).html(tot);
 											</script>
 										</tr>
-										
+										WITH Top1Work AS ( SELECT TOP 1 * FROM bizwiz20db.Workschedule_new WITH(NOLOCK) WHERE PSEQ_No = '5119' AND EmpSeqNo = '364541' AND OfficeCode = '102422' AND WorkMonth = '2026-10' AND DEL_TF = 'N' AND USE_TF = 'Y' ORDER BY REG_DATE DESC ), SplitWorkCodes AS ( SELECT t.WorkscheduleCode, t.PSEQ_No, t.WorkCode, t.WorkMemo, t.WorkDate, t.Last_Use_Tf, f.Item AS WorkCodeSplit, f.ItemOrder FROM Top1Work t CROSS APPLY dbo.fn_SplitStringWithEmpty(t.WorkCode, ',') f ), Colors AS ( SELECT s.WorkscheduleCode, s.WorkCode, s.WorkMemo, s.WorkDate, s.Last_Use_Tf, s.ItemOrder, s.WorkCodeSplit, ISNULL(wss.WorkColor, '') AS WorkColor, ISNULL(wss.WorkType, '') AS WorkType FROM SplitWorkCodes s LEFT JOIN bizwiz20db.WorkscheduleSetting wss WITH(NOLOCK) ON s.WorkCodeSplit = wss.WorkCode AND wss.OfficeCode = '102422' AND wss.del_tf = 'N'   ) SELECT c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf, STUFF(( SELECT ','  + innerC.WorkColor FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkColorsNumbered, STUFF(( SELECT ',' + innerC.WorkType FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkTypesNumbered FROM Colors c GROUP BY c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf; <BR>
 
 										<!-- 근무표 시작 위치 -->
 										<tr class="text-center">
@@ -2819,7 +2819,7 @@ $(document).ready(function(){
 												$("#totwork_"+ncnt).html(tot);
 											</script>
 										</tr>
-										
+										WITH Top1Work AS ( SELECT TOP 1 * FROM bizwiz20db.Workschedule_new WITH(NOLOCK) WHERE PSEQ_No = '5119' AND EmpSeqNo = '364895' AND OfficeCode = '102422' AND WorkMonth = '2026-10' AND DEL_TF = 'N' AND USE_TF = 'Y' ORDER BY REG_DATE DESC ), SplitWorkCodes AS ( SELECT t.WorkscheduleCode, t.PSEQ_No, t.WorkCode, t.WorkMemo, t.WorkDate, t.Last_Use_Tf, f.Item AS WorkCodeSplit, f.ItemOrder FROM Top1Work t CROSS APPLY dbo.fn_SplitStringWithEmpty(t.WorkCode, ',') f ), Colors AS ( SELECT s.WorkscheduleCode, s.WorkCode, s.WorkMemo, s.WorkDate, s.Last_Use_Tf, s.ItemOrder, s.WorkCodeSplit, ISNULL(wss.WorkColor, '') AS WorkColor, ISNULL(wss.WorkType, '') AS WorkType FROM SplitWorkCodes s LEFT JOIN bizwiz20db.WorkscheduleSetting wss WITH(NOLOCK) ON s.WorkCodeSplit = wss.WorkCode AND wss.OfficeCode = '102422' AND wss.del_tf = 'N'   ) SELECT c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf, STUFF(( SELECT ','  + innerC.WorkColor FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkColorsNumbered, STUFF(( SELECT ',' + innerC.WorkType FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkTypesNumbered FROM Colors c GROUP BY c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf; <BR>
 
 										<!-- 근무표 시작 위치 -->
 										<tr class="text-center">
@@ -2905,7 +2905,7 @@ $(document).ready(function(){
 												$("#totwork_"+ncnt).html(tot);
 											</script>
 										</tr>
-										
+										WITH Top1Work AS ( SELECT TOP 1 * FROM bizwiz20db.Workschedule_new WITH(NOLOCK) WHERE PSEQ_No = '5119' AND EmpSeqNo = '380702' AND OfficeCode = '102422' AND WorkMonth = '2026-10' AND DEL_TF = 'N' AND USE_TF = 'Y' ORDER BY REG_DATE DESC ), SplitWorkCodes AS ( SELECT t.WorkscheduleCode, t.PSEQ_No, t.WorkCode, t.WorkMemo, t.WorkDate, t.Last_Use_Tf, f.Item AS WorkCodeSplit, f.ItemOrder FROM Top1Work t CROSS APPLY dbo.fn_SplitStringWithEmpty(t.WorkCode, ',') f ), Colors AS ( SELECT s.WorkscheduleCode, s.WorkCode, s.WorkMemo, s.WorkDate, s.Last_Use_Tf, s.ItemOrder, s.WorkCodeSplit, ISNULL(wss.WorkColor, '') AS WorkColor, ISNULL(wss.WorkType, '') AS WorkType FROM SplitWorkCodes s LEFT JOIN bizwiz20db.WorkscheduleSetting wss WITH(NOLOCK) ON s.WorkCodeSplit = wss.WorkCode AND wss.OfficeCode = '102422' AND wss.del_tf = 'N'   ) SELECT c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf, STUFF(( SELECT ','  + innerC.WorkColor FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkColorsNumbered, STUFF(( SELECT ',' + innerC.WorkType FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkTypesNumbered FROM Colors c GROUP BY c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf; <BR>
 
 										<!-- 근무표 시작 위치 -->
 										<tr class="text-center">
@@ -2991,7 +2991,7 @@ $(document).ready(function(){
 												$("#totwork_"+ncnt).html(tot);
 											</script>
 										</tr>
-										
+										WITH Top1Work AS ( SELECT TOP 1 * FROM bizwiz20db.Workschedule_new WITH(NOLOCK) WHERE PSEQ_No = '5119' AND EmpSeqNo = '420498' AND OfficeCode = '102422' AND WorkMonth = '2026-10' AND DEL_TF = 'N' AND USE_TF = 'Y' ORDER BY REG_DATE DESC ), SplitWorkCodes AS ( SELECT t.WorkscheduleCode, t.PSEQ_No, t.WorkCode, t.WorkMemo, t.WorkDate, t.Last_Use_Tf, f.Item AS WorkCodeSplit, f.ItemOrder FROM Top1Work t CROSS APPLY dbo.fn_SplitStringWithEmpty(t.WorkCode, ',') f ), Colors AS ( SELECT s.WorkscheduleCode, s.WorkCode, s.WorkMemo, s.WorkDate, s.Last_Use_Tf, s.ItemOrder, s.WorkCodeSplit, ISNULL(wss.WorkColor, '') AS WorkColor, ISNULL(wss.WorkType, '') AS WorkType FROM SplitWorkCodes s LEFT JOIN bizwiz20db.WorkscheduleSetting wss WITH(NOLOCK) ON s.WorkCodeSplit = wss.WorkCode AND wss.OfficeCode = '102422' AND wss.del_tf = 'N'   ) SELECT c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf, STUFF(( SELECT ','  + innerC.WorkColor FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkColorsNumbered, STUFF(( SELECT ',' + innerC.WorkType FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkTypesNumbered FROM Colors c GROUP BY c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf; <BR>
 
 										<!-- 근무표 시작 위치 -->
 										<tr class="text-center">
@@ -3077,7 +3077,7 @@ $(document).ready(function(){
 												$("#totwork_"+ncnt).html(tot);
 											</script>
 										</tr>
-										
+										WITH Top1Work AS ( SELECT TOP 1 * FROM bizwiz20db.Workschedule_new WITH(NOLOCK) WHERE PSEQ_No = '5119' AND EmpSeqNo = '427252' AND OfficeCode = '102422' AND WorkMonth = '2026-10' AND DEL_TF = 'N' AND USE_TF = 'Y' ORDER BY REG_DATE DESC ), SplitWorkCodes AS ( SELECT t.WorkscheduleCode, t.PSEQ_No, t.WorkCode, t.WorkMemo, t.WorkDate, t.Last_Use_Tf, f.Item AS WorkCodeSplit, f.ItemOrder FROM Top1Work t CROSS APPLY dbo.fn_SplitStringWithEmpty(t.WorkCode, ',') f ), Colors AS ( SELECT s.WorkscheduleCode, s.WorkCode, s.WorkMemo, s.WorkDate, s.Last_Use_Tf, s.ItemOrder, s.WorkCodeSplit, ISNULL(wss.WorkColor, '') AS WorkColor, ISNULL(wss.WorkType, '') AS WorkType FROM SplitWorkCodes s LEFT JOIN bizwiz20db.WorkscheduleSetting wss WITH(NOLOCK) ON s.WorkCodeSplit = wss.WorkCode AND wss.OfficeCode = '102422' AND wss.del_tf = 'N'   ) SELECT c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf, STUFF(( SELECT ','  + innerC.WorkColor FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkColorsNumbered, STUFF(( SELECT ',' + innerC.WorkType FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkTypesNumbered FROM Colors c GROUP BY c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf; <BR>
 
 										<!-- 근무표 시작 위치 -->
 										<tr class="text-center">
@@ -3163,7 +3163,7 @@ $(document).ready(function(){
 												$("#totwork_"+ncnt).html(tot);
 											</script>
 										</tr>
-										
+										WITH Top1Work AS ( SELECT TOP 1 * FROM bizwiz20db.Workschedule_new WITH(NOLOCK) WHERE PSEQ_No = '5119' AND EmpSeqNo = '423524' AND OfficeCode = '102422' AND WorkMonth = '2026-10' AND DEL_TF = 'N' AND USE_TF = 'Y' ORDER BY REG_DATE DESC ), SplitWorkCodes AS ( SELECT t.WorkscheduleCode, t.PSEQ_No, t.WorkCode, t.WorkMemo, t.WorkDate, t.Last_Use_Tf, f.Item AS WorkCodeSplit, f.ItemOrder FROM Top1Work t CROSS APPLY dbo.fn_SplitStringWithEmpty(t.WorkCode, ',') f ), Colors AS ( SELECT s.WorkscheduleCode, s.WorkCode, s.WorkMemo, s.WorkDate, s.Last_Use_Tf, s.ItemOrder, s.WorkCodeSplit, ISNULL(wss.WorkColor, '') AS WorkColor, ISNULL(wss.WorkType, '') AS WorkType FROM SplitWorkCodes s LEFT JOIN bizwiz20db.WorkscheduleSetting wss WITH(NOLOCK) ON s.WorkCodeSplit = wss.WorkCode AND wss.OfficeCode = '102422' AND wss.del_tf = 'N'   ) SELECT c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf, STUFF(( SELECT ','  + innerC.WorkColor FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkColorsNumbered, STUFF(( SELECT ',' + innerC.WorkType FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkTypesNumbered FROM Colors c GROUP BY c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf; <BR>
 
 										<!-- 근무표 시작 위치 -->
 										<tr class="text-center">
@@ -3249,7 +3249,7 @@ $(document).ready(function(){
 												$("#totwork_"+ncnt).html(tot);
 											</script>
 										</tr>
-										
+										WITH Top1Work AS ( SELECT TOP 1 * FROM bizwiz20db.Workschedule_new WITH(NOLOCK) WHERE PSEQ_No = '5119' AND EmpSeqNo = '416852' AND OfficeCode = '102422' AND WorkMonth = '2026-10' AND DEL_TF = 'N' AND USE_TF = 'Y' ORDER BY REG_DATE DESC ), SplitWorkCodes AS ( SELECT t.WorkscheduleCode, t.PSEQ_No, t.WorkCode, t.WorkMemo, t.WorkDate, t.Last_Use_Tf, f.Item AS WorkCodeSplit, f.ItemOrder FROM Top1Work t CROSS APPLY dbo.fn_SplitStringWithEmpty(t.WorkCode, ',') f ), Colors AS ( SELECT s.WorkscheduleCode, s.WorkCode, s.WorkMemo, s.WorkDate, s.Last_Use_Tf, s.ItemOrder, s.WorkCodeSplit, ISNULL(wss.WorkColor, '') AS WorkColor, ISNULL(wss.WorkType, '') AS WorkType FROM SplitWorkCodes s LEFT JOIN bizwiz20db.WorkscheduleSetting wss WITH(NOLOCK) ON s.WorkCodeSplit = wss.WorkCode AND wss.OfficeCode = '102422' AND wss.del_tf = 'N'   ) SELECT c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf, STUFF(( SELECT ','  + innerC.WorkColor FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkColorsNumbered, STUFF(( SELECT ',' + innerC.WorkType FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkTypesNumbered FROM Colors c GROUP BY c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf; <BR>
 
 										<!-- 근무표 시작 위치 -->
 										<tr class="text-center">
@@ -3335,7 +3335,7 @@ $(document).ready(function(){
 												$("#totwork_"+ncnt).html(tot);
 											</script>
 										</tr>
-										
+										WITH Top1Work AS ( SELECT TOP 1 * FROM bizwiz20db.Workschedule_new WITH(NOLOCK) WHERE PSEQ_No = '5119' AND EmpSeqNo = '416848' AND OfficeCode = '102422' AND WorkMonth = '2026-10' AND DEL_TF = 'N' AND USE_TF = 'Y' ORDER BY REG_DATE DESC ), SplitWorkCodes AS ( SELECT t.WorkscheduleCode, t.PSEQ_No, t.WorkCode, t.WorkMemo, t.WorkDate, t.Last_Use_Tf, f.Item AS WorkCodeSplit, f.ItemOrder FROM Top1Work t CROSS APPLY dbo.fn_SplitStringWithEmpty(t.WorkCode, ',') f ), Colors AS ( SELECT s.WorkscheduleCode, s.WorkCode, s.WorkMemo, s.WorkDate, s.Last_Use_Tf, s.ItemOrder, s.WorkCodeSplit, ISNULL(wss.WorkColor, '') AS WorkColor, ISNULL(wss.WorkType, '') AS WorkType FROM SplitWorkCodes s LEFT JOIN bizwiz20db.WorkscheduleSetting wss WITH(NOLOCK) ON s.WorkCodeSplit = wss.WorkCode AND wss.OfficeCode = '102422' AND wss.del_tf = 'N'   ) SELECT c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf, STUFF(( SELECT ','  + innerC.WorkColor FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkColorsNumbered, STUFF(( SELECT ',' + innerC.WorkType FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkTypesNumbered FROM Colors c GROUP BY c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf; <BR>
 
 										<!-- 근무표 시작 위치 -->
 										<tr class="text-center">
@@ -3421,7 +3421,7 @@ $(document).ready(function(){
 												$("#totwork_"+ncnt).html(tot);
 											</script>
 										</tr>
-										
+										WITH Top1Work AS ( SELECT TOP 1 * FROM bizwiz20db.Workschedule_new WITH(NOLOCK) WHERE PSEQ_No = '5119' AND EmpSeqNo = '426239' AND OfficeCode = '102422' AND WorkMonth = '2026-10' AND DEL_TF = 'N' AND USE_TF = 'Y' ORDER BY REG_DATE DESC ), SplitWorkCodes AS ( SELECT t.WorkscheduleCode, t.PSEQ_No, t.WorkCode, t.WorkMemo, t.WorkDate, t.Last_Use_Tf, f.Item AS WorkCodeSplit, f.ItemOrder FROM Top1Work t CROSS APPLY dbo.fn_SplitStringWithEmpty(t.WorkCode, ',') f ), Colors AS ( SELECT s.WorkscheduleCode, s.WorkCode, s.WorkMemo, s.WorkDate, s.Last_Use_Tf, s.ItemOrder, s.WorkCodeSplit, ISNULL(wss.WorkColor, '') AS WorkColor, ISNULL(wss.WorkType, '') AS WorkType FROM SplitWorkCodes s LEFT JOIN bizwiz20db.WorkscheduleSetting wss WITH(NOLOCK) ON s.WorkCodeSplit = wss.WorkCode AND wss.OfficeCode = '102422' AND wss.del_tf = 'N'   ) SELECT c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf, STUFF(( SELECT ','  + innerC.WorkColor FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkColorsNumbered, STUFF(( SELECT ',' + innerC.WorkType FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkTypesNumbered FROM Colors c GROUP BY c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf; <BR>
 
 										<!-- 근무표 시작 위치 -->
 										<tr class="text-center">
@@ -3507,7 +3507,7 @@ $(document).ready(function(){
 												$("#totwork_"+ncnt).html(tot);
 											</script>
 										</tr>
-										
+										WITH Top1Work AS ( SELECT TOP 1 * FROM bizwiz20db.Workschedule_new WITH(NOLOCK) WHERE PSEQ_No = '5119' AND EmpSeqNo = '448197' AND OfficeCode = '102422' AND WorkMonth = '2026-10' AND DEL_TF = 'N' AND USE_TF = 'Y' ORDER BY REG_DATE DESC ), SplitWorkCodes AS ( SELECT t.WorkscheduleCode, t.PSEQ_No, t.WorkCode, t.WorkMemo, t.WorkDate, t.Last_Use_Tf, f.Item AS WorkCodeSplit, f.ItemOrder FROM Top1Work t CROSS APPLY dbo.fn_SplitStringWithEmpty(t.WorkCode, ',') f ), Colors AS ( SELECT s.WorkscheduleCode, s.WorkCode, s.WorkMemo, s.WorkDate, s.Last_Use_Tf, s.ItemOrder, s.WorkCodeSplit, ISNULL(wss.WorkColor, '') AS WorkColor, ISNULL(wss.WorkType, '') AS WorkType FROM SplitWorkCodes s LEFT JOIN bizwiz20db.WorkscheduleSetting wss WITH(NOLOCK) ON s.WorkCodeSplit = wss.WorkCode AND wss.OfficeCode = '102422' AND wss.del_tf = 'N'   ) SELECT c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf, STUFF(( SELECT ','  + innerC.WorkColor FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkColorsNumbered, STUFF(( SELECT ',' + innerC.WorkType FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkTypesNumbered FROM Colors c GROUP BY c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf; <BR>
 
 										<!-- 근무표 시작 위치 -->
 										<tr class="text-center">
@@ -3593,7 +3593,7 @@ $(document).ready(function(){
 												$("#totwork_"+ncnt).html(tot);
 											</script>
 										</tr>
-										
+										WITH Top1Work AS ( SELECT TOP 1 * FROM bizwiz20db.Workschedule_new WITH(NOLOCK) WHERE PSEQ_No = '5119' AND EmpSeqNo = '364743' AND OfficeCode = '102422' AND WorkMonth = '2026-10' AND DEL_TF = 'N' AND USE_TF = 'Y' ORDER BY REG_DATE DESC ), SplitWorkCodes AS ( SELECT t.WorkscheduleCode, t.PSEQ_No, t.WorkCode, t.WorkMemo, t.WorkDate, t.Last_Use_Tf, f.Item AS WorkCodeSplit, f.ItemOrder FROM Top1Work t CROSS APPLY dbo.fn_SplitStringWithEmpty(t.WorkCode, ',') f ), Colors AS ( SELECT s.WorkscheduleCode, s.WorkCode, s.WorkMemo, s.WorkDate, s.Last_Use_Tf, s.ItemOrder, s.WorkCodeSplit, ISNULL(wss.WorkColor, '') AS WorkColor, ISNULL(wss.WorkType, '') AS WorkType FROM SplitWorkCodes s LEFT JOIN bizwiz20db.WorkscheduleSetting wss WITH(NOLOCK) ON s.WorkCodeSplit = wss.WorkCode AND wss.OfficeCode = '102422' AND wss.del_tf = 'N'   ) SELECT c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf, STUFF(( SELECT ','  + innerC.WorkColor FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkColorsNumbered, STUFF(( SELECT ',' + innerC.WorkType FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkTypesNumbered FROM Colors c GROUP BY c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf; <BR>
 
 										<!-- 근무표 시작 위치 -->
 										<tr class="text-center">
@@ -3679,7 +3679,7 @@ $(document).ready(function(){
 												$("#totwork_"+ncnt).html(tot);
 											</script>
 										</tr>
-										
+										WITH Top1Work AS ( SELECT TOP 1 * FROM bizwiz20db.Workschedule_new WITH(NOLOCK) WHERE PSEQ_No = '5119' AND EmpSeqNo = '448213' AND OfficeCode = '102422' AND WorkMonth = '2026-10' AND DEL_TF = 'N' AND USE_TF = 'Y' ORDER BY REG_DATE DESC ), SplitWorkCodes AS ( SELECT t.WorkscheduleCode, t.PSEQ_No, t.WorkCode, t.WorkMemo, t.WorkDate, t.Last_Use_Tf, f.Item AS WorkCodeSplit, f.ItemOrder FROM Top1Work t CROSS APPLY dbo.fn_SplitStringWithEmpty(t.WorkCode, ',') f ), Colors AS ( SELECT s.WorkscheduleCode, s.WorkCode, s.WorkMemo, s.WorkDate, s.Last_Use_Tf, s.ItemOrder, s.WorkCodeSplit, ISNULL(wss.WorkColor, '') AS WorkColor, ISNULL(wss.WorkType, '') AS WorkType FROM SplitWorkCodes s LEFT JOIN bizwiz20db.WorkscheduleSetting wss WITH(NOLOCK) ON s.WorkCodeSplit = wss.WorkCode AND wss.OfficeCode = '102422' AND wss.del_tf = 'N'   ) SELECT c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf, STUFF(( SELECT ','  + innerC.WorkColor FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkColorsNumbered, STUFF(( SELECT ',' + innerC.WorkType FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkTypesNumbered FROM Colors c GROUP BY c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf; <BR>
 
 										<!-- 근무표 시작 위치 -->
 										<tr class="text-center">
@@ -3765,7 +3765,7 @@ $(document).ready(function(){
 												$("#totwork_"+ncnt).html(tot);
 											</script>
 										</tr>
-										
+										WITH Top1Work AS ( SELECT TOP 1 * FROM bizwiz20db.Workschedule_new WITH(NOLOCK) WHERE PSEQ_No = '5119' AND EmpSeqNo = '364877' AND OfficeCode = '102422' AND WorkMonth = '2026-10' AND DEL_TF = 'N' AND USE_TF = 'Y' ORDER BY REG_DATE DESC ), SplitWorkCodes AS ( SELECT t.WorkscheduleCode, t.PSEQ_No, t.WorkCode, t.WorkMemo, t.WorkDate, t.Last_Use_Tf, f.Item AS WorkCodeSplit, f.ItemOrder FROM Top1Work t CROSS APPLY dbo.fn_SplitStringWithEmpty(t.WorkCode, ',') f ), Colors AS ( SELECT s.WorkscheduleCode, s.WorkCode, s.WorkMemo, s.WorkDate, s.Last_Use_Tf, s.ItemOrder, s.WorkCodeSplit, ISNULL(wss.WorkColor, '') AS WorkColor, ISNULL(wss.WorkType, '') AS WorkType FROM SplitWorkCodes s LEFT JOIN bizwiz20db.WorkscheduleSetting wss WITH(NOLOCK) ON s.WorkCodeSplit = wss.WorkCode AND wss.OfficeCode = '102422' AND wss.del_tf = 'N'   ) SELECT c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf, STUFF(( SELECT ','  + innerC.WorkColor FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkColorsNumbered, STUFF(( SELECT ',' + innerC.WorkType FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkTypesNumbered FROM Colors c GROUP BY c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf; <BR>
 
 										<!-- 근무표 시작 위치 -->
 										<tr class="text-center">
@@ -3851,7 +3851,7 @@ $(document).ready(function(){
 												$("#totwork_"+ncnt).html(tot);
 											</script>
 										</tr>
-										
+										WITH Top1Work AS ( SELECT TOP 1 * FROM bizwiz20db.Workschedule_new WITH(NOLOCK) WHERE PSEQ_No = '5119' AND EmpSeqNo = '364882' AND OfficeCode = '102422' AND WorkMonth = '2026-10' AND DEL_TF = 'N' AND USE_TF = 'Y' ORDER BY REG_DATE DESC ), SplitWorkCodes AS ( SELECT t.WorkscheduleCode, t.PSEQ_No, t.WorkCode, t.WorkMemo, t.WorkDate, t.Last_Use_Tf, f.Item AS WorkCodeSplit, f.ItemOrder FROM Top1Work t CROSS APPLY dbo.fn_SplitStringWithEmpty(t.WorkCode, ',') f ), Colors AS ( SELECT s.WorkscheduleCode, s.WorkCode, s.WorkMemo, s.WorkDate, s.Last_Use_Tf, s.ItemOrder, s.WorkCodeSplit, ISNULL(wss.WorkColor, '') AS WorkColor, ISNULL(wss.WorkType, '') AS WorkType FROM SplitWorkCodes s LEFT JOIN bizwiz20db.WorkscheduleSetting wss WITH(NOLOCK) ON s.WorkCodeSplit = wss.WorkCode AND wss.OfficeCode = '102422' AND wss.del_tf = 'N'   ) SELECT c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf, STUFF(( SELECT ','  + innerC.WorkColor FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkColorsNumbered, STUFF(( SELECT ',' + innerC.WorkType FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkTypesNumbered FROM Colors c GROUP BY c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf; <BR>
 
 										<!-- 근무표 시작 위치 -->
 										<tr class="text-center">
@@ -3937,7 +3937,7 @@ $(document).ready(function(){
 												$("#totwork_"+ncnt).html(tot);
 											</script>
 										</tr>
-										
+										WITH Top1Work AS ( SELECT TOP 1 * FROM bizwiz20db.Workschedule_new WITH(NOLOCK) WHERE PSEQ_No = '5119' AND EmpSeqNo = '364888' AND OfficeCode = '102422' AND WorkMonth = '2026-10' AND DEL_TF = 'N' AND USE_TF = 'Y' ORDER BY REG_DATE DESC ), SplitWorkCodes AS ( SELECT t.WorkscheduleCode, t.PSEQ_No, t.WorkCode, t.WorkMemo, t.WorkDate, t.Last_Use_Tf, f.Item AS WorkCodeSplit, f.ItemOrder FROM Top1Work t CROSS APPLY dbo.fn_SplitStringWithEmpty(t.WorkCode, ',') f ), Colors AS ( SELECT s.WorkscheduleCode, s.WorkCode, s.WorkMemo, s.WorkDate, s.Last_Use_Tf, s.ItemOrder, s.WorkCodeSplit, ISNULL(wss.WorkColor, '') AS WorkColor, ISNULL(wss.WorkType, '') AS WorkType FROM SplitWorkCodes s LEFT JOIN bizwiz20db.WorkscheduleSetting wss WITH(NOLOCK) ON s.WorkCodeSplit = wss.WorkCode AND wss.OfficeCode = '102422' AND wss.del_tf = 'N'   ) SELECT c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf, STUFF(( SELECT ','  + innerC.WorkColor FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkColorsNumbered, STUFF(( SELECT ',' + innerC.WorkType FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkTypesNumbered FROM Colors c GROUP BY c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf; <BR>
 
 										<!-- 근무표 시작 위치 -->
 										<tr class="text-center">
@@ -4023,7 +4023,7 @@ $(document).ready(function(){
 												$("#totwork_"+ncnt).html(tot);
 											</script>
 										</tr>
-										
+										WITH Top1Work AS ( SELECT TOP 1 * FROM bizwiz20db.Workschedule_new WITH(NOLOCK) WHERE PSEQ_No = '5119' AND EmpSeqNo = '364890' AND OfficeCode = '102422' AND WorkMonth = '2026-10' AND DEL_TF = 'N' AND USE_TF = 'Y' ORDER BY REG_DATE DESC ), SplitWorkCodes AS ( SELECT t.WorkscheduleCode, t.PSEQ_No, t.WorkCode, t.WorkMemo, t.WorkDate, t.Last_Use_Tf, f.Item AS WorkCodeSplit, f.ItemOrder FROM Top1Work t CROSS APPLY dbo.fn_SplitStringWithEmpty(t.WorkCode, ',') f ), Colors AS ( SELECT s.WorkscheduleCode, s.WorkCode, s.WorkMemo, s.WorkDate, s.Last_Use_Tf, s.ItemOrder, s.WorkCodeSplit, ISNULL(wss.WorkColor, '') AS WorkColor, ISNULL(wss.WorkType, '') AS WorkType FROM SplitWorkCodes s LEFT JOIN bizwiz20db.WorkscheduleSetting wss WITH(NOLOCK) ON s.WorkCodeSplit = wss.WorkCode AND wss.OfficeCode = '102422' AND wss.del_tf = 'N'   ) SELECT c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf, STUFF(( SELECT ','  + innerC.WorkColor FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkColorsNumbered, STUFF(( SELECT ',' + innerC.WorkType FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkTypesNumbered FROM Colors c GROUP BY c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf; <BR>
 
 										<!-- 근무표 시작 위치 -->
 										<tr class="text-center">
@@ -4109,7 +4109,7 @@ $(document).ready(function(){
 												$("#totwork_"+ncnt).html(tot);
 											</script>
 										</tr>
-										
+										WITH Top1Work AS ( SELECT TOP 1 * FROM bizwiz20db.Workschedule_new WITH(NOLOCK) WHERE PSEQ_No = '5119' AND EmpSeqNo = '364884' AND OfficeCode = '102422' AND WorkMonth = '2026-10' AND DEL_TF = 'N' AND USE_TF = 'Y' ORDER BY REG_DATE DESC ), SplitWorkCodes AS ( SELECT t.WorkscheduleCode, t.PSEQ_No, t.WorkCode, t.WorkMemo, t.WorkDate, t.Last_Use_Tf, f.Item AS WorkCodeSplit, f.ItemOrder FROM Top1Work t CROSS APPLY dbo.fn_SplitStringWithEmpty(t.WorkCode, ',') f ), Colors AS ( SELECT s.WorkscheduleCode, s.WorkCode, s.WorkMemo, s.WorkDate, s.Last_Use_Tf, s.ItemOrder, s.WorkCodeSplit, ISNULL(wss.WorkColor, '') AS WorkColor, ISNULL(wss.WorkType, '') AS WorkType FROM SplitWorkCodes s LEFT JOIN bizwiz20db.WorkscheduleSetting wss WITH(NOLOCK) ON s.WorkCodeSplit = wss.WorkCode AND wss.OfficeCode = '102422' AND wss.del_tf = 'N'   ) SELECT c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf, STUFF(( SELECT ','  + innerC.WorkColor FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkColorsNumbered, STUFF(( SELECT ',' + innerC.WorkType FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkTypesNumbered FROM Colors c GROUP BY c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf; <BR>
 
 										<!-- 근무표 시작 위치 -->
 										<tr class="text-center">
@@ -4195,7 +4195,7 @@ $(document).ready(function(){
 												$("#totwork_"+ncnt).html(tot);
 											</script>
 										</tr>
-										
+										WITH Top1Work AS ( SELECT TOP 1 * FROM bizwiz20db.Workschedule_new WITH(NOLOCK) WHERE PSEQ_No = '5119' AND EmpSeqNo = '364570' AND OfficeCode = '102422' AND WorkMonth = '2026-10' AND DEL_TF = 'N' AND USE_TF = 'Y' ORDER BY REG_DATE DESC ), SplitWorkCodes AS ( SELECT t.WorkscheduleCode, t.PSEQ_No, t.WorkCode, t.WorkMemo, t.WorkDate, t.Last_Use_Tf, f.Item AS WorkCodeSplit, f.ItemOrder FROM Top1Work t CROSS APPLY dbo.fn_SplitStringWithEmpty(t.WorkCode, ',') f ), Colors AS ( SELECT s.WorkscheduleCode, s.WorkCode, s.WorkMemo, s.WorkDate, s.Last_Use_Tf, s.ItemOrder, s.WorkCodeSplit, ISNULL(wss.WorkColor, '') AS WorkColor, ISNULL(wss.WorkType, '') AS WorkType FROM SplitWorkCodes s LEFT JOIN bizwiz20db.WorkscheduleSetting wss WITH(NOLOCK) ON s.WorkCodeSplit = wss.WorkCode AND wss.OfficeCode = '102422' AND wss.del_tf = 'N'   ) SELECT c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf, STUFF(( SELECT ','  + innerC.WorkColor FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkColorsNumbered, STUFF(( SELECT ',' + innerC.WorkType FROM Colors innerC WHERE innerC.WorkscheduleCode = c.WorkscheduleCode FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 1, '') AS WorkTypesNumbered FROM Colors c GROUP BY c.WorkscheduleCode, c.WorkCode, c.WorkMemo, c.WorkDate, c.Last_Use_Tf; <BR>
 
 										<!-- 근무표 시작 위치 -->
 										<tr class="text-center">
